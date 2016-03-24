@@ -14,7 +14,7 @@ def tooHigh():
     tryAgain()
     
 def tooLow():
-    print "Too low!"
+    print "Too low!\n"
     tryAgain()
     
 def checkNum(guess):
