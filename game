@@ -1,31 +1,42 @@
 import random
-number = (random.randint(0,100))
 
-def tryAgain():
+
+def tryAgain(number):
     guess = raw_input("-")
     guess = int(guess)
-    checkNum(guess)
+    checkNum(guess, number)
 
 def correct():
     print "You're Correct!\n"
-
-def tooHigh():
+    again = raw_input("Play Again? y/n    ")
+    if (again == "y"):
+        start()
+    elif (again == "n"):
+        print "awww okay :("
+    else:
+        print "Invalid Response"
+        
+def tooHigh(number):
     print "Too high!\n"
-    tryAgain()
+    tryAgain(number)
     
-def tooLow():
+def tooLow(number):
     print "Too low!\n"
-    tryAgain()
+    tryAgain(number)
     
-def checkNum(guess):
+def checkNum(guess, number):
     if (guess == number):
         correct()
     elif (guess > number):
-        tooHigh()
+        tooHigh(number)
     else:
-        tooLow()
+        tooLow(number)
+
+def start():
+    number = (random.randint(0,100))
+    guess = raw_input("Try to guess the number I'm thinking of! ")
+    guess = int(guess)
+    checkNum(guess, number)
 
 
-guess = raw_input("Try to guess the number I'm thinking of! ")
-guess = int(guess)
-checkNum(guess)
+start()
