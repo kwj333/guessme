@@ -3,11 +3,18 @@ import random
 
 def tryAgain(number):
     guess = raw_input("-")
-    guess = int(guess)
-    checkNum(guess, number)
+    try:
+        guess = int(guess)
+        checkNum(guess, number)
+    except:
+        print "that's not a number!"
+        tryAgain(number)
 
 def correct():
     print "You're Correct!\n"
+    playAgain()
+
+def playAgain():
     again = raw_input("Play Again? y/n    ")
     if (again == "y"):
         start()
@@ -15,6 +22,7 @@ def correct():
         print "awww okay :("
     else:
         print "Invalid Response"
+        playAgain()
         
 def tooHigh(number):
     print "Too high!\n"
@@ -35,8 +43,14 @@ def checkNum(guess, number):
 def start():
     number = (random.randint(0,100))
     guess = raw_input("Try to guess the number I'm thinking of! ")
-    guess = int(guess)
+    try:
+        guess = int(guess)
+    except:
+        print "that's not a number!"
+        start()
+        
     checkNum(guess, number)
 
 
 start()
+
